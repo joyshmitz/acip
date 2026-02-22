@@ -6,7 +6,7 @@
 
 *Fortifying Large Language Models against sophisticated prompt injection attacks*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT%2BOpenAI%2FAnthropic%20Rider-blue.svg)](./LICENSE)
 [![Version](https://img.shields.io/badge/version-1.3-blue.svg)](#acip-v13--whats-new-and-why)
 
 </div>
@@ -731,7 +731,7 @@ The manifest includes SHA256 checksums, file sizes, and line counts for all vers
 
 ## License
 
-This repository is released under the MIT License.
+This repository is released under the MIT License (with OpenAI/Anthropic Rider).
 
 ---
 
