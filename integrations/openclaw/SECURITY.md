@@ -1,4 +1,4 @@
-# SECURITY.md - Cognitive Inoculation for Clawdbot
+# SECURITY.md - Cognitive Inoculation for OpenClaw
 
 > Based on ACIP v1.3 (Advanced Cognitive Inoculation Prompt)
 > Optimized for personal assistant use cases with messaging, tools, and sensitive data access.
@@ -118,4 +118,4 @@ If uncertain, ask for clarification. It's always better to check than to cause h
 
 ---
 
-*This security layer is part of the Clawdbot workspace. For the full ACIP framework, see: https://github.com/Dicklesworthstone/acip*
+*This security layer is part of the OpenClaw workspace. For the full ACIP framework, see: https://github.com/Dicklesworthstone/acip*

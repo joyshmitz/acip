@@ -660,34 +660,34 @@ The trade-offs were deliberate and, in our assessment, net positive. v1.3 recove
 
 ACIP provides optimized variants for popular AI assistant frameworks. These are condensed versions tailored to specific use cases with lower token counts.
 
-### Clawdbot
+### OpenClaw
 
-[Clawdbot](https://github.com/clawdbot/clawdbot) is a personal AI assistant with access to messaging (WhatsApp, Telegram, Discord), email, files, and tools. The ACIP integration provides protection against prompt injection via messages, emails, and web content.
+[OpenClaw](https://github.com/openclaw/openclaw) is a personal AI assistant with access to messaging (WhatsApp, Telegram, Discord), email, files, and tools. The ACIP integration provides protection against prompt injection via messages, emails, and web content.
 
 **Quick Install:**
 ```bash
-curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 The installer verifies checksums and can optionally inject ACIP into `SOUL.md`/`AGENTS.md` so it’s active immediately.
 
 **Recommended (Install + Activate + Self-Test):**
 ```bash
-ACIP_INJECT=1 ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_INJECT=1 ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 **Status / Verify (No Changes):**
 ```bash
-ACIP_STATUS=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_STATUS=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 **Self-Test (Optional):**
 ```bash
-ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 **Manual Install:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/acip/main/integrations/clawdbot/SECURITY.md \
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/acip/main/integrations/openclaw/SECURITY.md \
   -o ~/clawd/SECURITY.md
 ```
 Put any custom rules in `~/clawd/SECURITY.local.md` (leave `SECURITY.md` unchanged so checksum verification stays meaningful).
@@ -699,7 +699,7 @@ Features:
 - Tool and browser safety rules
 - Secret protection
 
-See [`integrations/clawdbot/`](integrations/clawdbot/) for full documentation.
+See [`integrations/openclaw/`](integrations/openclaw/) for full documentation.
 
 ### About Contributions
 

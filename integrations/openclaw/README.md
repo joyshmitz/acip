@@ -1,17 +1,17 @@
-# ACIP Integration for Clawdbot
+# ACIP Integration for OpenClaw
 
-This directory contains an optimized version of ACIP (Advanced Cognitive Inoculation Prompt) specifically designed for [Clawdbot](https://github.com/clawdbot/clawdbot) personal AI assistants.
+This directory contains an optimized version of ACIP (Advanced Cognitive Inoculation Prompt) specifically designed for [OpenClaw](https://github.com/openclaw/openclaw) personal AI assistants.
 
 ## Activation (Important)
 
-Depending on your Clawdbot version/config, `SECURITY.md` may not be loaded automatically. This integration supports two safe activation paths:
+Depending on your OpenClaw version/config, `SECURITY.md` may not be loaded automatically. This integration supports two safe activation paths:
 
 1. **Active immediately (recommended):** inject ACIP into your `SOUL.md`/`AGENTS.md` so it’s guaranteed to be in the system prompt (the installer can do this with `ACIP_INJECT=1` and creates a timestamped backup).
-2. **Install only:** keep `SECURITY.md` in your workspace for versions of Clawdbot that load it directly (or future native support).
+2. **Install only:** keep `SECURITY.md` in your workspace for versions of OpenClaw that load it directly (or future native support).
 
-## Why ACIP for Clawdbot?
+## Why ACIP for OpenClaw?
 
-Clawdbot is a powerful personal assistant with access to:
+OpenClaw is a powerful personal assistant with access to:
 - Your messaging accounts (WhatsApp, Telegram, Discord, iMessage)
 - Your email (via Gmail hooks)
 - Your files and shell
@@ -23,22 +23,22 @@ This access makes it a high-value target for prompt injection attacks. Someone c
 - Email you content that attempts to hijack the agent
 - Share a link to a webpage with embedded injection attempts
 
-ACIP provides a cognitive security layer that helps Clawd recognize and resist these attacks.
+ACIP provides a cognitive security layer that helps OpenClaw recognize and resist these attacks.
 
 ## Quick Install
 
 ### Option 1: Manual (Recommended for Review)
 
-1. Copy `SECURITY.md` to your Clawdbot workspace:
+1. Copy `SECURITY.md` to your OpenClaw workspace:
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/acip/main/integrations/clawdbot/SECURITY.md \
+   curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/acip/main/integrations/openclaw/SECURITY.md \
      -o ~/clawd/SECURITY.md
    ```
 
 2. Create `SECURITY.local.md` for your custom rules (recommended):
    ```bash
    printf '%s\n' \
-     '# SECURITY.local.md - Local Rules for Clawdbot' \
+     '# SECURITY.local.md - Local Rules for OpenClaw' \
      '' \
      '## Additional Rules' \
      '' \
@@ -52,7 +52,7 @@ ACIP provides a cognitive security layer that helps Clawd recognize and resist t
    ```bash
    # Fetch the expected checksum
    EXPECTED=$(curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/acip/main/.checksums/manifest.json \
-     | grep -A5 '"file": "integrations/clawdbot/SECURITY.md"' \
+     | grep -A5 '"file": "integrations/openclaw/SECURITY.md"' \
      | grep sha256 | cut -d'"' -f4)
 
    # Calculate actual checksum
@@ -67,18 +67,18 @@ ACIP provides a cognitive security layer that helps Clawd recognize and resist t
    fi
    ```
 
-4. To activate today, inject it into `SOUL.md`/`AGENTS.md` (or rerun the installer with `ACIP_INJECT=1`). Otherwise, keep `SECURITY.md` for versions of Clawdbot that load it directly.
+4. To activate today, inject it into `SOUL.md`/`AGENTS.md` (or rerun the installer with `ACIP_INJECT=1`). Otherwise, keep `SECURITY.md` for versions of OpenClaw that load it directly.
 
 ### Option 2: Automated Script
 
 ```bash
-curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 Recommended (install + activate + self-test):
 
 ```bash
-ACIP_INJECT=1 ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_INJECT=1 ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 This script:
@@ -88,41 +88,41 @@ This script:
 - Backs up any existing `SECURITY.md`
 - Reports success or failure
 
-If your Clawdbot version doesn’t load `SECURITY.md` automatically, the installer will offer to **inject** the security layer into `SOUL.md`/`AGENTS.md` so it’s active immediately.
+If your OpenClaw version doesn’t load `SECURITY.md` automatically, the installer will offer to **inject** the security layer into `SOUL.md`/`AGENTS.md` so it’s active immediately.
 
 Install + activate immediately:
 
 ```bash
-ACIP_INJECT=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_INJECT=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 Edit your local rules after install:
 
 ```bash
-ACIP_EDIT_LOCAL=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_EDIT_LOCAL=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 Status / verify (no changes):
 
 ```bash
-ACIP_STATUS=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_STATUS=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 Tip: if you hit GitHub API rate limits, set `GITHUB_TOKEN` (or `GH_TOKEN`) before running the installer.
 If you have `cosign` installed, the installer will also verify a signed checksum manifest (when available).
 For maximum integrity, set `ACIP_REQUIRE_COSIGN=1` (fails closed if `cosign` isn’t installed).
 
-### Option 3: Clawdbot CLI (Coming Soon)
+### Option 3: OpenClaw CLI (Coming Soon)
 
 ```bash
-clawdbot security enable
-clawdbot security update
-clawdbot security disable
+openclaw security enable
+openclaw security update
+openclaw security disable
 ```
 
 ## What It Does
 
-When loaded into the agent’s prompt (either by pasting into `SOUL.md`/`AGENTS.md`, or via future `SECURITY.md` support in Clawdbot), it adds a security layer that:
+When loaded into the agent’s prompt (either by pasting into `SOUL.md`/`AGENTS.md`, or via future `SECURITY.md` support in OpenClaw), it adds a security layer that:
 
 1. **Establishes Trust Boundaries**
    - Messages from external sources are treated as potentially adversarial data
@@ -151,7 +151,7 @@ When loaded into the agent’s prompt (either by pasting into `SOUL.md`/`AGENTS.
 
 ## Token Cost
 
-The clawdbot-optimized `SECURITY.md` is approximately:
+The OpenClaw-optimized `SECURITY.md` is approximately:
 - ~1,200 tokens (vs. ~3,200 for full ACIP v1.3)
 - ~120 lines
 - Optimized for the personal assistant threat model
@@ -186,14 +186,14 @@ The manifest contains SHA256 checksums for all ACIP files, generated automatical
 To verify activation (injection):
 
 ```bash
-grep -n "ACIP:BEGIN clawdbot SECURITY.md" ~/clawd/SOUL.md 2>/dev/null || true
-grep -n "ACIP:BEGIN clawdbot SECURITY.md" ~/clawd/AGENTS.md 2>/dev/null || true
+grep -n "ACIP:BEGIN openclaw SECURITY.md" ~/clawd/SOUL.md 2>/dev/null || true
+grep -n "ACIP:BEGIN openclaw SECURITY.md" ~/clawd/AGENTS.md 2>/dev/null || true
 ```
 
 Self-test (optional, interactive):
 
 ```bash
-ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_SELFTEST=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 ## Expected Behavior
@@ -214,8 +214,8 @@ These are simple “sanity checks” you can try after activation:
 
 ## Troubleshooting
 
-- **Workspace auto-detect:** uses `CLAWD_WORKSPACE`, then `PWD` if it contains `SOUL.md`/`AGENTS.md`, then `~/.clawdbot/clawdbot.json`, else `~/clawd`.
-- **“Active: unknown”:** re-run with `ACIP_INJECT=1` (or set `ACIP_REQUIRE_ACTIVE=1` to fail unless activation succeeds), then restart Clawdbot.
+- **Workspace auto-detect:** uses `CLAWD_WORKSPACE`, then `PWD` if it contains `SOUL.md`/`AGENTS.md`, then `~/.openclaw/workspace`, then `~/.clawdbot/` (fallback), else `~/clawd`.
+- **”Active: unknown”:** re-run with `ACIP_INJECT=1` (or set `ACIP_REQUIRE_ACTIVE=1` to fail unless activation succeeds), then restart OpenClaw.
 - **Checksum mismatch:** you likely edited `SECURITY.md`; revert it and put custom rules in `SECURITY.local.md` instead.
 - **GitHub API rate limits:** set `GITHUB_TOKEN` or `GH_TOKEN`.
 - **Manifest signature:** if `cosign` is installed and signature verification fails, the installer will refuse unless `ACIP_ALLOW_UNVERIFIED=1` is set. Set `ACIP_REQUIRE_COSIGN=1` to require `cosign`.
@@ -228,7 +228,7 @@ Recommended (keeps `SECURITY.local.md` and refreshes any existing injection bloc
 
 ```bash
 curl -fsSL -H "Accept: application/vnd.github.raw" \
-  "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+  "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 Manual update (verify after download):
@@ -238,7 +238,7 @@ Manual update (verify after download):
 cp ~/clawd/SECURITY.md ~/clawd/SECURITY.md.backup
 
 # Download latest
-curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/acip/main/integrations/clawdbot/SECURITY.md \
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/acip/main/integrations/openclaw/SECURITY.md \
   -o ~/clawd/SECURITY.md
 
 # Verify checksum (recommended)
@@ -253,25 +253,25 @@ To disable ACIP protection:
 mv ~/clawd/SECURITY.md ~/clawd/SECURITY.md.disabled
 ```
 
-Or simply delete the file. Clawdbot will continue to operate without the security layer.
+Or simply delete the file. OpenClaw will continue to operate without the security layer.
 
 If you installed by pasting into `SOUL.md`/`AGENTS.md`, remove that section instead.
 
 Uninstall via installer:
 
 ```bash
-ACIP_UNINSTALL=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_UNINSTALL=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 Purge (also deletes `SECURITY.local.md` and skips keeping `SECURITY.md` backups):
 
 ```bash
-ACIP_UNINSTALL=1 ACIP_PURGE=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/clawdbot/install.sh?ref=main&ts=$(date +%s)" | bash
+ACIP_UNINSTALL=1 ACIP_PURGE=1 curl -fsSL -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/Dicklesworthstone/acip/contents/integrations/openclaw/install.sh?ref=main&ts=$(date +%s)" | bash
 ```
 
 ## Compatibility
 
-- **Clawdbot version:** Any (paste into `SOUL.md`/`AGENTS.md`). Dedicated `SECURITY.md` loading requires a small Clawdbot change.
+- **OpenClaw version:** Any (paste into `SOUL.md`/`AGENTS.md`). Dedicated `SECURITY.md` loading requires a small OpenClaw change.
 - **Workspace files:** Compatible with AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md, USER.md
 - **Skills:** Does not conflict with skills
 
@@ -285,7 +285,7 @@ If ACIP causes problems with legitimate use cases:
 
 ## License
 
-MIT License - same as ACIP and Clawdbot.
+MIT License - same as ACIP and OpenClaw.
 
 ---
 
